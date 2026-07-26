@@ -1,12 +1,18 @@
 package com.example.managestructure;
 
+import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ManageStructure extends JavaPlugin {
 
     private static ManageStructure instance;
     private RegionManager regionManager;
     private SelectionManager selectionManager;
+    private final Set<Material> autoBreakBlocks = new HashSet<>();
 
     @Override
     public void onEnable() {
@@ -16,6 +22,7 @@ public class ManageStructure extends JavaPlugin {
 
         this.regionManager = new RegionManager(this);
         this.selectionManager = new SelectionManager();
+        loadAutoBreakBlocks();
 
         getServer().getPluginManager().registerEvents(new ProtectionListener(this), this);
 
@@ -23,7 +30,29 @@ public class ManageStructure extends JavaPlugin {
         getCommand("managestructure").setExecutor(executor);
         getCommand("managestructure").setTabCompleter(executor);
 
-        getLogger().info("ManageStructure da duoc kich hoat! Dang bao ve " + regionManager.getRegions().size() + " vung cong trinh.");
+        getLogger().info("ManageStructure da duoc kich hoat! Auto-detect " + autoBreakBlocks.size()
+                + " loai block, dang bao ve " + regionManager.getRegions().size() + " vung thu cong.");
+    }
+
+    public void loadAutoBreakBlocks() {
+        autoBreakBlocks.clear();
+        List<String> list = getConfig().getStringList("auto-break-blocks");
+        for (String s : list) {
+            Material m = Material.matchMaterial(s.trim().toUpperCase());
+            if (m != null) {
+                autoBreakBlocks.add(m);
+            } else {
+                getLogger().warning("Khong tim thay Material: " + s + " trong auto-break-blocks, da bo qua.");
+            }
+        }
+    }
+
+    public boolean isAutoProtectedBlock(Material material) {
+        return autoBreakBlocks.contains(material);
+    }
+
+    public Set<Material> getAutoBreakBlocks() {
+        return autoBreakBlocks;
     }
 
     @Override
