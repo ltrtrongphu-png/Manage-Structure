@@ -1,0 +1,36 @@
+# =========================================
+#  ManageStructure - Config
+# =========================================
+
+settings:
+  # Chi cho phep tao vung bao ve trong the gioi co moi truong NETHER hoac THE_END
+  only-nether-and-end: true
+
+  # Bat/tat tung loai bao ve
+  protect-break: true          # Chan pha block trong vung
+  protect-place: true          # Chan dat block trong vung (chong xay bay/pha hoai gian tiep)
+  protect-containers: true     # Chan mo ruong/shulker/lo nau/hopper... trong vung
+  protect-explosions: true     # Chan TNT / linh hon end crystal / creeper... pha block trong vung
+  protect-hanging: true        # Bao ve item frame / tranh treo / armor stand trong vung
+
+messages:
+  no-permission-break: "&cBan khong co quyen pha block trong cong trinh &e%region%&c!"
+  no-permission-place: "&cBan khong co quyen dat block trong cong trinh &e%region%&c!"
+  no-permission-container: "&cBan khong co quyen mo do chua trong cong trinh &e%region%&c!"
+  no-permission-hanging: "&cBan khong co quyen pha vat trang tri trong cong trinh &e%region%&c!"
+
+  region-created: "&aDa tao vung bao ve &e%region%&a! Quyen yeu cau: &b%permission%"
+  region-removed: "&aDa xoa vung bao ve &e%region%&a."
+  region-exists: "&cVung &e%region% &cda ton tai."
+  region-not-found: "&cKhong tim thay vung &e%region%&c."
+  region-list-empty: "&eHien chua co vung bao ve nao."
+  region-info: "&6=== Vung &e%region% &6==="
+
+  need-both-positions: "&cBan can chon ca 2 diem (pos1, pos2) truoc khi tao vung! Dung /ms pos1 va /ms pos2."
+  pos-set: "&aDa dat %pos% tai &e%x%, %y%, %z% &a(the gioi: %world%)"
+  wrong-world-type: "&cChi co the tao vung bao ve trong the gioi Nether hoac The End!"
+  different-worlds: "&cHai diem pos1 va pos2 phai cung mot the gioi!"
+
+  locate-not-found: "&cKhong tim thay cong trinh nao gan day (trong ban kinh da cho)."
+  locate-found: "&aTim thay cong trinh gan nhat tai: &e%world% %x%, %y%, %z%"
+  locate-invalid-type: "&cKhong tim thay loai cong trinh: &e%type%"
