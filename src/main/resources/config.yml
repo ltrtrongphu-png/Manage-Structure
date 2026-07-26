@@ -3,20 +3,67 @@
 # =========================================
 
 settings:
-  # Chi cho phep tao vung bao ve trong the gioi co moi truong NETHER hoac THE_END
-  only-nether-and-end: true
+  # --- AUTO-DETECT (khong can danh dau vung, ap dung cho toan server) ---
+  auto-detect-blocks: true       # Tu dong chan pha cac block dac trung trong "auto-break-blocks" o duoi
+  auto-detect-containers: true   # Tu dong chan mo cac ruong/shulker/barrel CHUA TUNG DUOC MO (co loot table)
 
-  # Bat/tat tung loai bao ve
-  protect-break: true          # Chan pha block trong vung
-  protect-place: true          # Chan dat block trong vung (chong xay bay/pha hoai gian tiep)
-  protect-containers: true     # Chan mo ruong/shulker/lo nau/hopper... trong vung
-  protect-explosions: true     # Chan TNT / linh hon end crystal / creeper... pha block trong vung
-  protect-hanging: true        # Bao ve item frame / tranh treo / armor stand trong vung
+  # --- VUNG THU CONG (dung /ms pos1, pos2, create...) ---
+  protect-manual-regions: true
+  only-nether-and-end: true       # Chi cho tao vung thu cong trong the gioi Nether/The End
+  protect-place: true              # Chan dat block trong VUNG THU CONG (khong ap dung cho auto-detect)
+  protect-explosions: true         # Chan no pha block (ca auto-detect lan vung thu cong)
+  protect-hanging: true            # Bao ve item frame/tranh treo/armor stand (chi trong VUNG THU CONG)
+
+# Danh sach block se tu dong bi bao ve o BAT KY DAU trong the gioi Nether/The End
+# neu nguoi choi khong co quyen "managestructure.access".
+# Luu y: mot so block (vd BLACKSTONE) cung sinh ra tu nhien o bien Basalt Deltas,
+# neu thay bi bao ve qua tay ban co the xoa bot trong danh sach nay.
+auto-break-blocks:
+  # --- Nether Fortress ---
+  - NETHER_BRICKS
+  - NETHER_BRICK_FENCE
+  - NETHER_BRICK_STAIRS
+  - NETHER_BRICK_WALL
+  - NETHER_BRICK_SLAB
+  - RED_NETHER_BRICKS
+  - RED_NETHER_BRICK_STAIRS
+  - RED_NETHER_BRICK_WALL
+  - RED_NETHER_BRICK_SLAB
+  - NETHER_WART_BLOCK
+  - CHAIN
+  - LANTERN
+
+  # --- Bastion Remnant ---
+  - POLISHED_BLACKSTONE
+  - POLISHED_BLACKSTONE_BRICKS
+  - CRACKED_POLISHED_BLACKSTONE_BRICKS
+  - CHISELED_POLISHED_BLACKSTONE
+  - GILDED_BLACKSTONE
+  - POLISHED_BLACKSTONE_STAIRS
+  - POLISHED_BLACKSTONE_BRICK_STAIRS
+  - POLISHED_BLACKSTONE_WALL
+  - POLISHED_BLACKSTONE_BRICK_WALL
+  - POLISHED_BLACKSTONE_SLAB
+  - POLISHED_BLACKSTONE_BRICK_SLAB
+  - POLISHED_BLACKSTONE_PRESSURE_PLATE
+  - POLISHED_BLACKSTONE_BUTTON
+  - LODESTONE
+
+  # --- End City / End Ship ---
+  - PURPUR_BLOCK
+  - PURPUR_PILLAR
+  - PURPUR_STAIRS
+  - PURPUR_SLAB
+  - END_STONE_BRICKS
+  - END_STONE_BRICK_STAIRS
+  - END_STONE_BRICK_WALL
+  - END_STONE_BRICK_SLAB
+  - END_ROD
 
 messages:
-  no-permission-break: "&cBan khong co quyen pha block trong cong trinh &e%region%&c!"
+  no-permission-break: "&cBan khong co quyen pha block cong trinh nay! &7(&e%block%&7)"
   no-permission-place: "&cBan khong co quyen dat block trong cong trinh &e%region%&c!"
-  no-permission-container: "&cBan khong co quyen mo do chua trong cong trinh &e%region%&c!"
+  no-permission-container: "&cBan khong co quyen mo do chua nay (thuoc cong trinh chua duoc khui)!"
   no-permission-hanging: "&cBan khong co quyen pha vat trang tri trong cong trinh &e%region%&c!"
 
   region-created: "&aDa tao vung bao ve &e%region%&a! Quyen yeu cau: &b%permission%"
